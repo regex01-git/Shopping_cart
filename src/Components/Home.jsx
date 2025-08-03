@@ -9,7 +9,7 @@ export default function Home() {
     const productslice = useSelector((store) => store.products);
     const dispatch = useDispatch()
     const [pagination, setPagination] = useState([])
-    // const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const [items,setitems] = useState(productslice.items)
     
 
@@ -24,14 +24,15 @@ export default function Home() {
         async function scroll() {
             const { scrollTop, scrollHeight, clientHeight } = document.documentElement
                
-            if (scrollTop + clientHeight + 1 > scrollHeight) {
-                // setIsLoading(true)
+            if (scrollTop + clientHeight + 1 > scrollHeight && !isLoading) {
+                setIsLoading(true)
                 try {
+                    await new Promise((res)=>setTimeout(res,1000));
                     
                     await dispatch(productFetch(productslice.step))
                 }
                 finally {
-                    // setIsLoading(false)
+                    setIsLoading(false)
                 }
 
 
@@ -43,7 +44,7 @@ export default function Home() {
         }
 
 
-    }, [dispatch])
+    }, [dispatch, isLoading])
     return (
         <>
                
@@ -62,7 +63,8 @@ export default function Home() {
                     
                      {
                         
-                productslice.status === "pending" ? 
+                productslice.status === "pending"||
+                isLoading==true?
                 <div style={{width:"100%",textAlign:"center",marginTop:"80px"}}><Loader/></div>:null
                 }
                
