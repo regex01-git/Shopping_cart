@@ -9,7 +9,7 @@ export default function Home() {
     const productslice = useSelector((store) => store.products);
     const dispatch = useDispatch()
     const [pagination, setPagination] = useState([])
-    const [isLoading, setIsLoading] = useState(false);
+    // const [isLoading, setIsLoading] = useState(false);
     const [items,setitems] = useState(productslice.items)
     
 
@@ -24,14 +24,14 @@ export default function Home() {
         async function scroll() {
             const { scrollTop, scrollHeight, clientHeight } = document.documentElement
                
-            if (scrollTop + clientHeight + 1 > scrollHeight && !isLoading) {
-                setIsLoading(true)
+            if (scrollTop + clientHeight + 1 > scrollHeight) {
+                // setIsLoading(true)
                 try {
                     
                     await dispatch(productFetch(productslice.step))
                 }
                 finally {
-                    setIsLoading(false)
+                    // setIsLoading(false)
                 }
 
 
@@ -43,7 +43,7 @@ export default function Home() {
         }
 
 
-    }, [dispatch, isLoading])
+    }, [dispatch])
     return (
         <>
                
