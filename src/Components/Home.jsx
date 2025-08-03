@@ -24,7 +24,7 @@ export default function Home() {
         async function scroll() {
             const { scrollTop, scrollHeight, clientHeight } = document.documentElement
                
-            if (scrollTop + clientHeight + 1 > scrollHeight && !isLoading) {
+            if (scrollTop + clientHeight + 10 > scrollHeight && !isLoading) {
                 setIsLoading(true)
                 try {
                     await new Promise((res)=>setTimeout(res,1000));
