@@ -1,0 +1,34 @@
+*{
+  box-sizing: border-box;
+}
+.nav{
+    height:70px;
+}
+.webkit-line-clamp{
+    display: -webkit-box;              /* Required for multiline clamping */
+  -webkit-box-orient: vertical;      /* Sets orientation */
+  -webkit-line-clamp: 2;             /* Number of lines to show */
+  overflow: hidden; 
+  font-size: 16px;
+  font-weight: 650;
+}
+.product-detail-image{
+    /* border:1px solid black; */
+    width:90%;
+    height:80%;
+          /* prevents inline-gap issues */
+          overflow:hidden ;
+  
+}
+.product-detail-image img{
+  width: 100%;
+  height: 100%;
+   display: block; 
+  object-fit: cover;     /* or 'contain' depending on need */
+  object-position: center center;
+}
+.bold{
+  font-weight: 600;
+}
+/* CarouselControls.css */
+/* .carousel-control-prev-icon, */
