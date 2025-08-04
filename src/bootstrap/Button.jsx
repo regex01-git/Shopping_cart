@@ -16,6 +16,7 @@ export default function Buttonclick({item}){
       e.stopPropagation();
     //   dispatch(addproduct(item))   
       dispatch(addItem(item))
+      console.log("both",item.id,item.price)
     //   alert("Item added to cart successfully")
       
    }
